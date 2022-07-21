@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>text to image converter</title>
+  </head>
+  <body  >
+    <div style="text-align: center;">
+        <h1>Text to image Converter</h1>
+        <input type="text" size="30" style="font-size: 20pt;" id="input"/><br>
+        <button onclick="toImageConvert()" style="padding: 10px; margin: 20px;">To Image Convert</button> 
+        <hr>
+        <br>
+        <canvas id="canvas"width="700" style="display:none;"></canvas>
+        <img src="" id="image" alt=""  style="border: 5px solid #555;  box-shadow: 10px 10px lightblue; ">
+    </div>
+  </body>
+
+  <script>
+    function toImageConvert(){
+      const input=document.getElementById('input');
+      const canvas=document.getElementById('canvas');
+      const image=document.getElementById('image');
+      const ctx=canvas.getContext('2d'); 
+      ctx.font = "30px Arial";
+      ctx.fillText(input.value, 10, 100); 
+      let dataUrl=canvas.toDataURL();
+      image.src=dataUrl; 
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  </script>
+</html>
